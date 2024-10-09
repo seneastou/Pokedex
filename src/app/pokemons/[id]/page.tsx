@@ -68,7 +68,7 @@ export default function PokemonDetailPage() {
       <div className="mt-1 text-left">
         <Link
           href="/"
-          className="text-blue-500 hover:underline text-lg font-normal"
+          className="text-green-500 hover:underline pl-4"
         >
           Retour au Pokedex
         </Link>

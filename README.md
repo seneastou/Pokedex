@@ -3,9 +3,6 @@
 Ce projet est une application web construite avec React et Next.js, permettant aux utilisateurs
 d'explorer et de découvrir des informations sur différents Pokémon. Chaque Pokémon est
 représenté par une carte qui affiche son nom, son image, ses statistiques, et d'autres détails intéressants.
-Etant donné qu'il y'a un grand nombre de pokémon, un système de pagination est mise en place pour permettre à l'utilisateur de naviguer plus facilement entre les différentes pages.
-L'application est pleinement réactive sur les appareils mobiles et les tablettes. 
-L'utilisateur a la possibilité de rechercher un pokémon à travers le nom ou l'ID du pokémon.
 
 ## Fonctionnalités principales
 
@@ -13,10 +10,13 @@ L'utilisateur a la possibilité de rechercher un pokémon à travers le nom ou l
 - Affichage des informations relatives à un pokémon lorsqu'on clique sur une carte.
 - Filtrage des Pokémon par types.
 - Support du mode sombre et mode clair via un bouton de bascule de thème.
+- Système de pagination pour permettere à l'utilisateur de naviguer plus facilement entre les différentes pages.
+- Application responsive sur les appareils mobiles et tablettes.
+- Recherche d'un pokémon avec le nom et l'ID.
 
 ## Technologies utilisées
 
-- **Next.js** : Framework React pour les applications web côté serveur et utilisation de l'app router.
+- **Next.js** : Framework React pour les applications web côté serveur et utilisation de l'app Router.
 - **React** : Librairie JavaScript pour la création d'interfaces utilisateur.
 - **Tailwind CSS** : framework CSS utilitaire qui permet de construire rapidement des interfaces utilisateur (UI) sans avoir à écrire du CSS personnalisé.
 
@@ -31,6 +31,10 @@ L'utilisateur a la possibilité de rechercher un pokémon à travers le nom ou l
 
 ## Améliorations futures
 - Affichage des évolutions et pré-évolutions pour chaque Pokémon.
+- Implémentation des techniques d'optimisation, comme le lazy loading des images ou l'utilisation de React.memo pour éviter les re-rendu inutiles.
+- Ajout d'animations lors des transitions entre les pages ou lors des interactions utilisateur.
+
+
 
 ## Auteur
 - Astou SENE - Développeur

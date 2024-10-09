@@ -119,76 +119,94 @@ export default function PokemonList() {
   }
 
   return (
-    <div
-      className={`container mx-auto p-4 ${
-        theme === "light" ? "bg-white text-black" : "bg-black text-white"
+    <main
+  className={`container mx-auto p-4 ${
+    theme === "light" ? "bg-white text-black" : "bg-black text-white"
+  }`}
+>
+  {/* Bouton de thème en haut à gauche sur petits écrans */}
+  <div className="flex justify-start sm:hidden mb-4">
+    <Button />
+  </div>
+
+  {/* Conteneur pour le sélecteur de type, la recherche et le bouton de thème */}
+  <div className="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0 sm:space-x-4 w-full">
+    
+    {/* Sélecteur de type avec ajustements responsive */}
+    <select
+      id="typeFilter"
+      value={selectedType}
+      onChange={handleTypeChange}
+      className={`p-2 rounded-lg border-2 w-full sm:w-1/3 md:w-1/4 lg:w-auto focus:outline-none ${
+        theme === "light"
+          ? "bg-white text-black border-gray-300"
+          : "bg-gray-800 text-white border-gray-600"
       }`}
     >
-      {/* Conteneur pour le sélecteur de type, la recherche et le bouton de thème */}
-      <div className="flex justify-between items-center mb-8 space-x-4">
-        <select
-          id="typeFilter"
-          value={selectedType}
-          onChange={handleTypeChange}
-          className={`p-2 rounded-lg border-2 focus:outline-none ${
-            theme === "light"
-              ? "bg-white text-black border-gray-300"
-              : "bg-gray-800 text-white border-gray-600"
-          }`}
-        >
-          <option value="All">Sélectionnez type...</option>
-          <option value="normal">Normal</option>
-          <option value="fire">Feu</option>
-          <option value="water">Eau</option>
-          <option value="grass">Plante</option>
-          <option value="electric">Électrique</option>
-          <option value="ice">Glace</option>
-          <option value="fighting">Combat</option>
-          <option value="poison">Poison</option>
-          <option value="ground">Sol</option>
-          <option value="flying">Vol</option>
-          <option value="psychic">Psy</option>
-          <option value="bug">Insecte</option>
-          <option value="rock">Roche</option>
-          <option value="ghost">Spectre</option>
-          <option value="dragon">Dragon</option>
-          <option value="dark">Ténèbres</option>
-          <option value="steel">Acier</option>
-          <option value="fairy">Fée</option>
-        </select>
+      <option value="All">Sélectionnez type...</option>
+      <option value="normal">Normal</option>
+      <option value="fire">Feu</option>
+      <option value="water">Eau</option>
+      <option value="grass">Plante</option>
+      <option value="electric">Électrique</option>
+      <option value="ice">Glace</option>
+      <option value="fighting">Combat</option>
+      <option value="poison">Poison</option>
+      <option value="ground">Sol</option>
+      <option value="flying">Vol</option>
+      <option value="psychic">Psy</option>
+      <option value="bug">Insecte</option>
+      <option value="rock">Roche</option>
+      <option value="ghost">Spectre</option>
+      <option value="dragon">Dragon</option>
+      <option value="dark">Ténèbres</option>
+      <option value="steel">Acier</option>
+      <option value="fairy">Fée</option>
+    </select>
 
-        <div className="flex items-center border-2 rounded-lg overflow-hidden">
-          <input
-            type="text"
-            placeholder="Nom du pokemon"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className={`p-2 outline-none ${
-              theme === "light"
-                ? "bg-white text-black border-gray-300"
-                : "bg-black text-white border-gray-600"
-            }`}
-          />
-          <button className="bg-green-500 text-white p-2 hover:bg-green-600">
-            Rechercher
-          </button>
-        </div>
-        <Button />
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {currentPokemonList.map((pokemon) => (
-          <Link key={pokemon.id} href={`/pokemons/${pokemon.id}`}>
-            <PokemonCard pokemon={pokemon} />
-          </Link>
-        ))}
-      </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={setCurrentPage}
-        theme={theme}
+    {/* Champ de recherche avec ajustements responsive */}
+    <div className="flex items-center border-2 rounded-lg overflow-hidden w-full sm:w-1/2 md:w-1/3 lg:w-auto">
+      <input
+        type="text"
+        placeholder="Nom du pokemon"
+        value={searchQuery}
+        onChange={handleSearchChange}
+        className={`p-2 outline-none w-full focus:outline-none ${
+          theme === "light"
+            ? "bg-white text-black border-gray-300"
+            : "bg-black text-white border-gray-600"
+        }`}
       />
+      <button className="bg-green-500 text-white p-2 hover:bg-green-600">
+        Rechercher
+      </button>
     </div>
+
+    {/* Bouton de thème caché sur petits écrans, visible sur grands écrans */}
+    <div className="hidden sm:block">
+      <Button />
+    </div>
+  </div>
+
+  {/* Liste des Pokémon */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {currentPokemonList.map((pokemon) => (
+      <Link key={pokemon.id} href={`/pokemons/${pokemon.id}`}>
+        <PokemonCard pokemon={pokemon} />
+      </Link>
+    ))}
+  </div>
+
+  {/* Pagination */}
+  <Pagination
+    currentPage={currentPage}
+    totalPages={totalPages}
+    onPageChange={setCurrentPage}
+    theme={theme}
+  />
+</main>
+
+  
+
   );
 }
